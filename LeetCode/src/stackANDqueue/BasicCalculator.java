@@ -22,9 +22,6 @@ public class BasicCalculator {
 	}
 
 	public String pop() {
-		if (head == null) {
-			return "";
-		}
 		String value = head.value;
 		if (head.next == null) {
 			head = null;
@@ -35,84 +32,89 @@ public class BasicCalculator {
 
 	}
 
+	public String peek() {
+		return head.value;
+	}
+
 	public boolean isEmpty() {
 		return head == null;
 	}
 
 	public int calculate(String s) {
-		int length = s.length();
-		BasicCalculator s1 = new BasicCalculator();
-		BasicCalculator s2 = new BasicCalculator();
-		StringBuilder builder = new StringBuilder();
-		for (int i = 0; i < length; i++) {
-			String a = String.valueOf(s.charAt(i));
-			if (a.equals("(")) {
-
-			} else if (a.equals(" ")) {
-
-			} else if (a.equals(")")) {
-
-			} else {
-				builder.append(a);
-			}
-		}
-		String formula = builder.toString();
-		System.out.println(formula);
-
-		if (formula.indexOf("+") == -1 && formula.indexOf("-") == -1) {
-			return Integer.valueOf(formula);
-		}
-
+		BasicCalculator stack = new BasicCalculator();
+		s = s.replace(" ", "");
 		int index = 0;
-		for (int j = index; j < formula.length(); j++) {
 
-			//check the plus operator
-			if (String.valueOf(formula.charAt(index)).equals("+")) {
-				s2.push(String.valueOf(formula.charAt(index)));
+		for (int j = index; j < s.length(); j = index) {
+			String curr = String.valueOf(s.charAt(index));
+
+			// check the "+" "-" "(" operator
+			if (curr.equals("+") || curr.equals("-") || curr.equals("(")) {
+				stack.push(curr);
 				index++;
-				System.out.println("index:" + index);
-			} else if (String.valueOf(formula.charAt(index)).equals("-")) {
-				System.out.println(String.valueOf(formula.charAt(index)));
-				System.out.println("push2");
-				s2.push(String.valueOf(formula.charAt(index)));
-				index++;
-				System.out.println("index:" + index);
-			} else {
-				String a = "";
-				while (index<formula.length()&&!String.valueOf(formula.charAt(index)).equals("+")
-						&& !String.valueOf(formula.charAt(index)).equals("-")) {
-					StringBuilder sbuilder = new StringBuilder();
-					sbuilder.append(formula.charAt(index));
-					System.out.println("index:" + index);
-					index++;
-					a = sbuilder.toString();
-				}
-				System.out.println("index:" + index);
-				System.out.println(a);
-				if (s1.isEmpty()) {
-					s1.push(a);
-					System.out.println("push1");
-				} else {
-					System.out.println("else");
-					String f = s1.pop();
-					String operator = s2.pop();
-					String result = "";
-					if (operator.equals("+")) {
-						result = String.valueOf(Integer.valueOf(a) + Integer.valueOf(f));
+			}
+
+			// if it is the )
+			else if (curr.equals(")")) {
+				int temp = 0;
+				int result = 0;
+				while (!stack.peek().equals("(")) {
+					String pop_value = stack.pop();
+					if (pop_value.equals("+")) {
+						result = result + temp;
+					} else if (pop_value.equals("-")) {
+						result = result - temp;
 					} else {
-						result = String.valueOf(Integer.valueOf(f) - Integer.valueOf(a));
+						temp = Integer.valueOf(pop_value);
 					}
-					System.out.println(result);
-					s1.push(result);
 				}
+				result = result + temp;
+				if (stack.peek().equals("(")) {
+					stack.pop();
+				}
+				stack.push(String.valueOf(result));
+				index++;
+			}
+
+			// it is a number
+			else {
+				String number;
+				StringBuilder sbuilder = new StringBuilder();
+				while (index < s.length() && s.charAt(index) >= '0' && s.charAt(index) <= '9') {
+					sbuilder.append(s.charAt(index));
+					index++;
+				}
+				number = sbuilder.toString();
+				stack.push(number);
+			}
+
+		}
+
+		// if the fomula has no "(" ")"
+		int temp = 0;
+		int result = 0;
+		while (!stack.isEmpty()) {
+			String pop_value = stack.pop();
+			if (pop_value.equals("+")) {
+				result = result + temp;
+			} else if (pop_value.equals("-")) {
+				result = result - temp;
+			} else {
+				temp = Integer.valueOf(pop_value);
 			}
 		}
-		return Integer.valueOf(s1.pop());
+		result = result + temp;
+		stack.push(String.valueOf(result));
+
+		return Integer.valueOf(stack.pop());
+
 	}
 
 	public static void main(String[] args) {
 		BasicCalculator solution = new BasicCalculator();
-		String s = "1-11";
-		solution.calculate(s);
+		String s = "2-1 + 2";
+		System.out.println(solution.calculate(s));
+		char i = 1;
+		System.out.println("i" + i);
 	}
 }
