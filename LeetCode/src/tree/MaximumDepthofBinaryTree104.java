@@ -1,6 +1,6 @@
 package tree;
 
-public class MaximumDepthofBinaryTree {
+public class MaximumDepthofBinaryTree104 {
 	public int maxDepth(TreeNode root) {
 		if (root == null) {
 			return 0;

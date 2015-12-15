@@ -1,7 +1,9 @@
-package tree;
+package tree.traversal;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import tree.TreeNode;
 
 public class BinaryTreeLevelOrderTraversalII107 {
 	public List<List<Integer>> levelOrderBottom(TreeNode root) {

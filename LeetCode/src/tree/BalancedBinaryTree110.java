@@ -1,6 +1,6 @@
 package tree;
 
-public class BalancedBinaryTree {
+public class BalancedBinaryTree110 {
 	public boolean isBalanced(TreeNode root) {
 		if (root == null) {
 			return true;

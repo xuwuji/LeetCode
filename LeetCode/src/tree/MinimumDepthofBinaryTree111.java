@@ -1,6 +1,6 @@
 package tree;
 
-public class MinimumDepthofBinaryTree {
+public class MinimumDepthofBinaryTree111 {
 
 	public int minDepth(TreeNode root) {
 		if (root == null) {
