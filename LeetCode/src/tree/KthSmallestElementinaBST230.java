@@ -29,7 +29,6 @@ public class KthSmallestElementinaBST230 {
 			if (!stack.isEmpty()) {
 				TreeNode node = stack.peek();
 				pointer = node.right;
-
 				count++;
 				if (k == count) {
 					return stack.pop().val;
@@ -42,5 +41,24 @@ public class KthSmallestElementinaBST230 {
 
 		return 0;
 
+	}
+
+	public int kthSmallestRecursive(TreeNode pointer, int k) {
+		int number = getNodesCount(pointer.left);
+
+		if (k == number + 1) {
+			return pointer.val;
+		} else if (k < number + 1) {
+			return kthSmallest(pointer.left, k);
+		} else {
+			return kthSmallest(pointer.right, k - number - 1);
+		}
+
+	}
+
+	private int getNodesCount(TreeNode pointer) {
+		if (pointer == null)
+			return 0;
+		return 1 + getNodesCount(pointer.left) + getNodesCount(pointer.right);
 	}
 }
