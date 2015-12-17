@@ -1,4 +1,4 @@
-package tree;
+package tree.easy;
 
 public class SymmetricTree101 {
 	public boolean isSymmetric(TreeNode root) {

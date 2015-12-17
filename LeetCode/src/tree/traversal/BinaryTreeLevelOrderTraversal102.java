@@ -3,7 +3,7 @@ package tree.traversal;
 import java.util.ArrayList;
 import java.util.List;
 
-import tree.TreeNode;
+import tree.easy.TreeNode;
 
 public class BinaryTreeLevelOrderTraversal102 {
 

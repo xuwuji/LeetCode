@@ -1,4 +1,4 @@
-package tree;
+package tree.easy;
 
 public class MaximumDepthofBinaryTree104 {
 	public int maxDepth(TreeNode root) {

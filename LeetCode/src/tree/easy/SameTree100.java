@@ -1,4 +1,4 @@
-package tree;
+package tree.easy;
 
 public class SameTree100 {
 	public boolean isSameTree(TreeNode p, TreeNode q) {

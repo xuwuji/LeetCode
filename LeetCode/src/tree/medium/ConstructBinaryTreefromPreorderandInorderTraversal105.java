@@ -1,9 +1,13 @@
 package tree.medium;
 
-import java.util.Arrays;
+import tree.easy.TreeNode;
 
-import tree.TreeNode;
-
+/**
+ * Given preorder and inorder traversal of a tree, construct the binary tree.
+ * 
+ * @author wuxu
+ *
+ */
 public class ConstructBinaryTreefromPreorderandInorderTraversal105 {
 	public TreeNode buildTree(int[] preorder, int[] inorder) {
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import tree.TreeNode;
+import tree.easy.TreeNode;
 
 public class BinaryTreePreorderTraversal144 {
 	public List<Integer> preorderTraversal(TreeNode root) {

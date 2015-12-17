@@ -3,7 +3,7 @@ package tree.traversal;
 import java.util.ArrayList;
 import java.util.List;
 
-import tree.TreeNode;
+import tree.easy.TreeNode;
 
 public class BinaryTreePostorderTraversal145 {
 	public List<Integer> postorderTraversal(TreeNode root) {

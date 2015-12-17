@@ -1,4 +1,4 @@
-package tree;
+package tree.easy;
 
 public class PathSum112 {
 	public boolean hasPathSum(TreeNode root, int sum) {

@@ -1,4 +1,4 @@
-package tree;
+package tree.easy;
 
 public class LowestCommonAncestorofaBinarySearchTree235 {
 	public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {

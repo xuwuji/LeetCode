@@ -1,4 +1,4 @@
-package tree;
+package tree.easy;
 
 public class BalancedBinaryTree110 {
 	public boolean isBalanced(TreeNode root) {
