@@ -63,7 +63,7 @@ public class ShortestPathBetweenTwoNodes {
 			return 1 + PathBetweenRootToNode(root.left, p);
 		}
 
-		return 1 + PathBetweenRootToNode(root.left, p) + PathBetweenRootToNode(root.right, p);
+		return 1 + Math.min(PathBetweenRootToNode(root.left, p), PathBetweenRootToNode(root.right, p));
 
 	}
 
