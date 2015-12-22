@@ -6,7 +6,7 @@ import linkedlist.other.ListNode;
  * Reverse a singly linked list.
  * 
  * @author wuxu
- * @time 2015Äê12ÔÂ22ÈÕ
+ * @time 2015ï¿½ï¿½12ï¿½ï¿½22ï¿½ï¿½
  */
 public class ReverseLinkedList206 {
 	private ListNode head;
@@ -68,8 +68,11 @@ public class ReverseLinkedList206 {
 		r.head.next = new ListNode(2);
 		r.head.next.next = new ListNode(3);
 		r.head.next.next.next = new ListNode(4);
-		// r.iterator(r.head);
-		ListNode newNode = r.reverseList(r.head);
-		r.iterator(newNode);
+		ListNode node = r.head;
+
+		node = node.next;
+		r.iterator(node);
+		// ListNode newNode = r.reverseList(r.head);
+		// r.iterator(newNode);
 	}
 }
