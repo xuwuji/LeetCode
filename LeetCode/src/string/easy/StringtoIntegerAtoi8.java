@@ -59,25 +59,29 @@ public class StringtoIntegerAtoi8 {
 			sb.append(s.charAt(0));
 		} else if (valid(s.charAt(0))) {
 			sb.append(s.charAt(0));
+		} else {
+			return 0;
 		}
-		//s = sb.toString();
+		// s = sb.toString();
 		System.out.println(sb.toString());
+		System.out.println(Integer.MIN_VALUE);
 		// 2.ignore unvalid char
 		for (int i = 1; i < s.length(); i++) {
 			System.out.println(i);
 			System.out.println(sb.toString());
 			if (operator(s.charAt(i - 1)) && !valid(s.charAt(i))) {
+				System.out.println("here");
 				return 0;
 			}
 
 			if (operator(s.charAt(i - 1)) && operator(s.charAt(i))) {
+				System.out.println("there");
 				return 0;
 			}
-			
+
 			if (valid(s.charAt(i - 1)) && !valid(s.charAt(i))) {
-				
+
 				if (exceed(sb.toString())) {
-					
 					if (sb.charAt(0) == '-') {
 						return Integer.MIN_VALUE;
 					} else {
@@ -91,9 +95,6 @@ public class StringtoIntegerAtoi8 {
 				sb.append(s.charAt(i));
 			}
 
-			if (sb.length() > 11) {
-				return 0;
-			}
 		}
 
 		String result = sb.toString();
@@ -152,6 +153,13 @@ public class StringtoIntegerAtoi8 {
 			}
 		}
 
+		// positive
+		if (s.length() == 10 && s.charAt(0) != '-' && s.charAt(0) != '+') {
+			if (s.charAt(9) > '7') {
+				return true;
+			}
+		}
+
 		return false;
 	}
 
@@ -165,7 +173,7 @@ public class StringtoIntegerAtoi8 {
 
 	public static void main(String[] args) {
 		// System.out.println(Integer.valueOf("-2147448"));
-		System.out.println(StringtoIntegerAtoi8.myAtoi("      -11919730356x"));
+		System.out.println(StringtoIntegerAtoi8.myAtoi(" b11228552307"));
 	}
 
 }
